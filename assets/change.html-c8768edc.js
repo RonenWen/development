@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-7a16aef8","path":"/front-end/change.html","title":"记录","lang":"zh-CN","frontmatter":{"title":"记录","author":"James Yuan","index":true,"icon":"blog","order":2},"headers":[],"git":{},"readingTime":{"minutes":1.02,"words":306},"filePathRelative":"front-end/change.md"}');export{e as data};
