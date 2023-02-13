@@ -68,7 +68,7 @@
             let formData = new FormData(form);
             let ddate = formData.get("text");
             ddate=ddate.replace(/-/g,"")
-            $.post("https:/api.wenjiaquan.com/select.php",
+            $.post("https://api.wenjiaquan.com/select.php",
                 {
                     date: ddate,
                     fangxiang: formData.get("fangxiang"),
