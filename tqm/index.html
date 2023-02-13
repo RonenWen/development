@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提取码查询</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        .selectArea {
+            width: 50%;
+            /* background-color: red; */
+            height: auto;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="selectArea">
+        <h1>提取码查询</h1>
+        <form id="from" onsubmit="false">
+            <div class="mb-3 mt-3">
+                <label for="text" class="form-label">日期:</label>
+                <input type="date" name="text" id="text" class="form-control">
+                <!-- <input type="text" class="form-control" id="text" placeholder="输入日期，例如：20230101" name="text"> -->
+            </div>
+            
+            <label for="text" class="form-label">方向</label>
+            <select class="form-select" name="fangxiang">
+                <option value="front">前端</option>
+                <option value="back">后端</option>
+                <option value="safety">网络安全</option>
+            </select>
+            <br>
+            <label for="text" class="form-label">资料类型</label>
+            <select class="form-select" name="leixing">
+                <option value="beforeClass">课前资料</option>
+                <option value="ppt">回放和PPT</option>
+                <option value="homework">考试题或作业</option>
+            </select>
+            <br>
+
+        </form>
+        <button class="btn btn-primary" id="btn">查询</button>
+        <div id="666">
+
+        </div>
+    </div>
+
+</body>
+<script>
+    // let btn=document.getElementById("btn");
+
+    // console.log(formData.get("date"));
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            $("#btn").html('<span class="spinner-border spinner-border-sm"></span>正在查询')
+            let form = document.getElementById("from");
+            let zzcx = '<br><br>  <div class="card bg-primary text-white">\
+    <div class="card-body"><span class="spinner-border spinner-border-sm"></span>正在查询</div>\
+  </div>'
+            $("#666").html(zzcx);
+            let formData = new FormData(form);
+            let ddate = formData.get("text");
+            ddate=ddate.replace(/-/g,"")
+            $.post("https:/api.wenjiaquan.com/select.php",
+                {
+                    date: ddate,
+                    fangxiang: formData.get("fangxiang"),
+                    leixing: formData.get("leixing")
+                },
+                function (data, status) {
+                    console.log(data);
+                    if (status != "success") {
+                        $("#btn").html('查询失败')
+                        alert("err!")
+                    } else {
+                        $("#btn").html('查询')
+                        // data1 = JSON.parse(data);
+                        data1=data;
+                        if (data1['code'] == "-1") {
+                            let zzcx = '<br><br>  <div class="card bg-danger text-white">\
+    <div class="card-body">查询失败！请检查查询条件是否正确</div>\
+  </div>'
+                            $("#btn").html('查询失败')
+                            $("#666").html(zzcx);
+                            alert("查询失败，请检查查询条件是否正确！")
+
+                            return;
+                        }
+                        let tabl = '<br><br>  <div class="card bg-success text-white">\
+    <div class="card-body">查询成功！</div>\
+  </div>\
+  <br><table class="table table-striped">\
+    <thead>\
+      <tr>\
+        <th>日期</th>\
+        <th>链接</th>\
+        <th>方向</th>\
+        <th>类型</th>\
+        <th>提取码</th>\
+      </tr>\
+    </thead>\
+    <tbody>\
+      <tr>\
+        <td>'+ data1["date"] + '</td>\
+        <td><a href="'+ data1["url"] + '" target="_blank">' + data1["url"] + '</a></td>\
+        <td>'+ data1["fangxiang"] + '</td>\
+        <td>'+ data1["leixing"] + '</td>\
+        <td>'+ data1["tqm"] + '</td>\
+      </tr>\
+    </tbody>\
+  </table>'
+                        $("#666").html(tabl)
+                    }
+                    // alert("数据: \n" + data + "\n状态: " + status);
+                });
+        });
+    });
+</script>
+
+</html>
