@@ -17,6 +17,12 @@
             height: auto;
             margin: auto;
         }
+        .div666{
+            max-width: 100%;
+        }
+        table{
+            max-width: 100%;
+        }
         @media screen and (max-width:1000px){
             .selectArea {
             width: 100%;
@@ -53,7 +59,7 @@
 
         </form>
         <button class="btn btn-primary" id="btn">查询</button>
-        <div id="666">
+        <div id="666" class="div666">
 
         </div>
     </div>
@@ -99,27 +105,46 @@
 
                             return;
                         }
+                        let riqi=data1["date"];
+                        let year = riqi[0]+riqi[1]+riqi[2]+riqi[3];
+                        let mou="0"
+                        if(riqi[4]=="0"){
+                            mou=riqi[5];
+                        }else{
+                            mou=riqi[4]+riqi[5];
+                        }
+                        let day="0";
+                        if(riqi[6]=="0"){
+                            day=riqi[7];
+                        }else{
+                            day=riqi[6]+riqi[7];
+                        }
+                        // console.log(year+"年"+mou+"月"+day+"日");
                         let tabl = '<br><br>  <div class="card bg-success text-white">\
     <div class="card-body">查询成功！</div>\
   </div>\
   <br><table class="table table-striped">\
-    <thead>\
-      <tr>\
-        <th>日期</th>\
-        <th>链接</th>\
-        <th>方向</th>\
-        <th>类型</th>\
-        <th>提取码</th>\
-      </tr>\
-    </thead>\
     <tbody>\
-      <tr>\
-        <td>'+ data1["date"] + '</td>\
-        <td><a href="'+ data1["url"] + '" target="_blank">' + data1["url"] + '</a></td>\
-        <td>'+ data1["fangxiang"] + '</td>\
-        <td>'+ data1["leixing"] + '</td>\
-        <td>'+ data1["tqm"] + '</td>\
-      </tr>\
+        <tr>\
+                        <th>日期</th>\
+                        <td>'+ year+"年"+mou+"月"+day+"日" + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th>链接</th>\
+                        <td><a href="'+ data1["url"] + '" target="_blank">' + data1["url"] + '</a></td>\
+                    </tr>\
+                    <tr>\
+                        <th>方向</th>\
+                        <td>'+ data1["fangxiang"] + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th>类型</th>\
+                        <td>'+ data1["leixing"] + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th>提取码</th>\
+                        <td>'+ data1["tqm"] + '</td>\
+                    </tr>\
     </tbody>\
   </table>'
                         $("#666").html(tabl)
