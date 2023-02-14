@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-1270019c","path":"/design/list/20230214.html","title":"2023年2月14日","lang":"zh-CN","frontmatter":{"author":"Design Department"},"headers":[{"level":2,"title":"培训详情","slug":"培训详情","link":"#培训详情","children":[]}],"git":{},"readingTime":{"minutes":0.51,"words":153},"filePathRelative":"design/list/20230214.md"}');export{e as data};
