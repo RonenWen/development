@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-7385afc1","path":"/back-end/list/20230218.html","title":"2023年2月18日","lang":"zh-CN","frontmatter":{"author":"Jensen Ren"},"headers":[{"level":2,"title":"培训详情","slug":"培训详情","link":"#培训详情","children":[]}],"git":{},"readingTime":{"minutes":0.62,"words":187},"filePathRelative":"back-end/list/20230218.md"}');export{e as data};

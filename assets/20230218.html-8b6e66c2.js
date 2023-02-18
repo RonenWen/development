@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-59e6c651","path":"/front-end/list/20230218.html","title":"2023年2月18日","lang":"zh-CN","frontmatter":{"author":"James Yuan"},"headers":[{"level":2,"title":"培训详情","slug":"培训详情","link":"#培训详情","children":[]}],"git":{},"readingTime":{"minutes":0.57,"words":172},"filePathRelative":"front-end/list/20230218.md"}');export{e as data};

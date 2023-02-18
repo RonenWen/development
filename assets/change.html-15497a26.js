@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-04ea8388","path":"/back-end/change.html","title":"记录","lang":"zh-CN","frontmatter":{"title":"记录","author":"Jensen Ren","index":true,"icon":"blog","order":2},"headers":[],"git":{},"readingTime":{"minutes":0.78,"words":234},"filePathRelative":"back-end/change.md"}');export{e as data};
